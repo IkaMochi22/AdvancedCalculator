@@ -26,13 +26,12 @@ def factors(x):
     if x < 0:
         neg = True
         x = -x
-        
+
     factors_list = [1, x]
     complete_list = []
     for i in range(2, math.ceil(math.sqrt(x) + 1)): #no point going past the square root
         if x % i == 0:
             factors_list += (i, x//i)
-            #print((i), '\t\t', format(str(reversed((i)))))
     
     if neg:
         complete_list = factors_list + list(reversed(factors_list))
@@ -60,7 +59,7 @@ print(" 7. Exponents")
 print(" 8. Quadratic Formula")
 
 # Variables
-num0 = 0
+num = 0
 num1 = 0
 num2 = 0
 num3 = 0

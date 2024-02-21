@@ -26,16 +26,17 @@ def factors(x):
     if x < 0:
         neg = True
         x = -x
+        
     factors_list = [1, x]
     complete_list = []
-    for i in range(2, math.ceil(math.sqrt(x) + 1)):
+    for i in range(2, math.ceil(math.sqrt(x) + 1)): #no point going past the square root
         if x % i == 0:
             factors_list += (i, x//i)
             #print((i), '\t\t', format(str(reversed((i)))))
     
     if neg:
         complete_list = factors_list + list(reversed(factors_list))
-        complete_list = [complete_list[i] * (i%2 * -2 + 1) for i in range(len(complete_list))]
+        complete_list = [complete_list[i] * (i%2 * -2 + 1) for i in range(len(complete_list))] #horrible evil to format it correctly
     else:
         complete_list = factors_list
 
@@ -94,6 +95,7 @@ while True:
             print(cmath.sqrt(num1))
         elif choice == '6':
             print(f"The factors of {num1} are: ")
+
             res = factors(num1)
             for i in range(0, len(res), 2):
                 print(res[i], "\t\t", res[i+1])

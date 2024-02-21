@@ -21,11 +21,25 @@ def Division(x, y):
 def SquareRoot(x):
     return (cmath.sqrt(x))
 
-def print_factors(x):
-    print("The factors of",x, "are: ")
-    for i in range(1, x + 1):
+def factors(x):
+    neg = False
+    if x < 0:
+        neg = True
+        x = -x
+    factors_list = [1, x]
+    complete_list = []
+    for i in range(2, math.ceil(math.sqrt(x) + 1)):
         if x % i == 0:
-            print((i), '\t\t', format(str(reversed((i)))))
+            factors_list += (i, x//i)
+            #print((i), '\t\t', format(str(reversed((i)))))
+    
+    if neg:
+        complete_list = factors_list + list(reversed(factors_list))
+        complete_list = [complete_list[i] * (i%2 * -2 + 1) for i in range(len(complete_list))]
+    else:
+        complete_list = factors_list
+
+    return complete_list
 
 def Exponents(x, y):
     return (x **y)
@@ -45,7 +59,7 @@ print(" 7. Exponents")
 print(" 8. Quadratic Formula")
 
 # Variables
-num = 0
+num0 = 0
 num1 = 0
 num2 = 0
 num3 = 0
@@ -79,7 +93,10 @@ while True:
         elif choice == '5':
             print(cmath.sqrt(num1))
         elif choice == '6':
-            print_factors(num1)
+            print(f"The factors of {num1} are: ")
+            res = factors(num1)
+            for i in range(0, len(res), 2):
+                print(res[i], "\t\t", res[i+1])
         else:
             print(num1,"^", num2, "=", Exponents(num1, num2))
     if choice == '8':

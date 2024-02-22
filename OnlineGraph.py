@@ -42,8 +42,10 @@ def PointOne():
 	t.pendown()
 	t.dot()
 	t.penup()
-	t.write(x1)
+	t.write((x1, y1))
 	t.goto(0,0)
+
+	return x1, y1
 
 # Plots the second point on the x axis
 def PointTwo():
@@ -54,12 +56,14 @@ def PointTwo():
 	t.pendown()
 	t.dot()
 	t.penup()
-	t.write(x2)
+	t.write((x2, y2))
 	t.penup()
 	t.goto(x2,y2)
 	t.pendown()
 	t.goto(x1,y1)
 	t.penup()
+
+	return x2, y2
 
 # Graph is drawn
 draw_axes()
@@ -68,14 +72,11 @@ if answer == '1':
 	PointOne()
 	t.done
 else:
-	PointOne()
-	PointTwo()
+	x1, y1 = PointOne()
+	x2, y2 = PointTwo()
 
 def equation():
 	m = (y2 - y1)/(x2 - x1)
-
-
-
 
 
 t.exitonclick()

@@ -5,6 +5,9 @@ t = turtle
 
 x1 = 0
 x2 = 0
+y1 = 0
+y2 = 0
+m = 0
 
 # Screen setup
 ts = turtle.Screen()
@@ -30,9 +33,11 @@ def draw_axes():
 	t.write("0")
 	t.penup()
 
-def PlotXOne():
+# Plots the first point on the x axis
+def PointOne():
 	x1 = t.numinput("First x value", "Enter x1")
-	t.goto(x1,0)
+	y1 = t.numinput("First y value", "Enter y1")
+	t.goto(x1,y1)
 	t.pencolor('black')
 	t.pendown()
 	t.dot()
@@ -40,26 +45,34 @@ def PlotXOne():
 	t.write(x1)
 	t.goto(0,0)
 
-def PlotXTwo():
+# Plots the second point on the x axis
+def PointTwo():
 	x2 = t.numinput("Second x value", "Enter x2")
-	t.goto(x2, 0)
+	y2 = t.numinput("Second y value", "Enter y2")
+	t.goto(x2,y2)
 	t.pencolor('black')
 	t.pendown()
 	t.dot()
 	t.penup()
 	t.write(x2)
-	t.goto(0,0)
+	t.penup()
+	t.goto(x2,y2)
+	t.pendown()
+	t.goto(x1,y1)
+	t.penup()
 
+# Graph is drawn
 draw_axes()
 answer = t.textinput("How many x intercepts do you want?" , "1 / 2")
 if answer == '1':
-	PlotXOne()
+	PointOne()
 	t.done
 else:
-	PlotXOne()
-	PlotXTwo()
-	
+	PointOne()
+	PointTwo()
 
+def equation():
+	m = (y2 - y1)/(x2 - x1)
 
 
 

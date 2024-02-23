@@ -108,7 +108,7 @@ while True:
                 print(res[i], "\t\t", res[i+1])
 
         else:
-            print(num1, "^", num2, "=", Exponent(num1, num2))
+            print(num1, "^", num2, "=", Exponents(num1, num2))
 
     if choice == '8':
         try:
